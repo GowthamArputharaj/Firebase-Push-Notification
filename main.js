@@ -25,7 +25,7 @@ messaging.requestPermission()
 .catch((err) => {
     console.log('GOT permission');
     console.log(err);
-})
+});
 
 messaging.onMessage((payload) => {
     console.log('onMessage: ', payload);
@@ -43,10 +43,12 @@ async function sendNotification() {
 
     const title = document.querySelector('#title').value;
     const body = document.querySelector('#body').value;
+    const token = document.querySelector('#token').value;
 
     const url = `${window.location.href}/send-notification.php`;
     const data = {
-        to: receiverApiKey, // the receiver's apiKey; can get from messaging.getToken();
+        // to: receiverApiKey, // the receiver's apiKey; can get from messaging.getToken();
+        to: token,
         data: {
             title: title,
             body: body,
